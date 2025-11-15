@@ -1,5 +1,6 @@
 from sqlalchemy import Column,ForeignKey, Integer, Date, Enum
 from src.config.database import Base
+from sqlalchemy.orm import relationship  # ← Para relationship
 
 class Loan(Base):
     __tablename__ = "emprestimo"

@@ -1,8 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP
 from src.config.database import Base
+from sqlalchemy.sql import text  # ← Para server_default
+from sqlalchemy.orm import relationship  # ← Para relationship
 
 class Book(Base):
-    __tablenamme__= "livros"
+    __tablename__= "livros"
 
     id = Collum(Integer, primary_key= True,index=True, autoincrement = True )
     titulo = Column(String(200), unique=True)
@@ -13,4 +15,4 @@ class Book(Base):
     disponivel_para_emprestimo = Column(Boolean, default=True)
     data_cadastro = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
 
-    emprestimo = relationship("Loan", back_populates="livro")
+    emprestimos = relationship("Loan", back_populates="livro")

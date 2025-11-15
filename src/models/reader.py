@@ -1,5 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP, Text
 from src.config.database import Base 
+from sqlalchemy.sql import text  # ← Para server_default
+from sqlalchemy.orm import relationship  # ← Para relationship
 
 class Reader(Base):
     __tablename__ = "leitor"
